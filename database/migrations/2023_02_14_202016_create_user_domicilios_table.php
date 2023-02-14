@@ -18,9 +18,14 @@ class CreateUserDomiciliosTable extends Migration
             $table->string('domicilio');
             $table->string('numero_exterior'); //Considerando que puede ser por ejemplo 34A y 34B
             $table->string('colonia');
-            $table->string('cp');
+            $table->integer('cp');
             $table->string('ciudad');
-            $table->timestamps();
+            $table->foreign('id')
+                ->references('id')
+                ->on('users')
+                ->onDelete('cascade')
+                ->onUpdate('cascade');
+            // $table->timestamps();
         });
     }
 
