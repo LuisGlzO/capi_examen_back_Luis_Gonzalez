@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use Carbon\Carbon;
 
 class User extends Authenticatable
 {
@@ -44,8 +45,14 @@ class User extends Authenticatable
     ];
     // public $timestamps = false;
 
+    // protected $appends = ['edad'];
+
     public function casa(){
         return $this->hasOne(user_domicilio::class, 'id');
     }
+
+    // public function getEdadAttribute(){
+    //     return Carbon::parse($this->fecha_nacimiento)->diff(Carbon::now())->y;
+    // }
 }   
  
